@@ -21,14 +21,14 @@ public class InvoiceServiceTest {
         Assertions.assertEquals(5,fare,0.0);
     }
     @Test
-    public void givenMultipleRides_ShouldReturnTotalFare() {
+    public void  givenMultipleRides_ShouldReturnInvoiceSummary() {
         InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
         Ride [] rides = {new Ride(2.0, 5),
                 new Ride(0.1, 1),
-                        };
-        double fare = invoiceGenerator.calculateFare(rides);
-        Assertions.assertEquals(30, fare,0.0);
-
+        };
+        InvoiceSummary summary = invoiceGenerator.calculateFare(rides);
+        InvoiceSummary expectedinvoiceSummary = new InvoiceSummary(2, 30.0);
+        Assertions.assertEquals(expectedinvoiceSummary, summary);
 
     }
 }
